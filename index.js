@@ -5,10 +5,9 @@ const User = require("./db/User")
 const Product = require("./db/Product");
 const app = express();
 const Jwt = require("jsonwebtoken");
-
+const PORT = process.env.PORT || 5000
 // by using this key webtoken is generating
 const jwtKey = 'e-com';
-
 
 
 
@@ -85,6 +84,8 @@ app.post("/register", async (req, resp) => {
 
 
 app.post('/login', async (req, res) => {
+    console.log("login called");
+
     const { email, password } = req.body;
 
     if (email && password) {
@@ -269,4 +270,5 @@ function verification(req, resp, next) {
 
 }
 
-app.listen(5000);
+app.listen(PORT);
+// app.listen(5000);
